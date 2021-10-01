@@ -11,7 +11,7 @@ h1 {
     padding: 30px;
 }
 
-.container {
+.block {
     display: flex;
     width: 100%;
     height: 90%;
@@ -37,7 +37,7 @@ span {
 #undo,
 #clear,
 #download {
-    margin: 10px;
+    margin: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
