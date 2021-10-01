@@ -45,10 +45,37 @@ canvas.addEventListener("mouseup", (e) =>
 );
 
 // add the ability to erase the drawn, button 'Eraser'
+let eraser = document.getElementById("eraser");
+
+eraser.addEventListener("click", () => {
+    colorBrush = backgroundColor;
+    ctx.strokeStyle = colorBrush;
+});
 
 // add the undo option a few steps back, button 'Undo'
 
+let PushArray = new Array();
+
+canvas.addEventListener("mouseup", (e) => {
+    function pushArr() {
+        PushArray.push(document.getElementById("canvas").toDataURL());
+    }
+    pushArr();
+    canvas.removeEventListener("mousemove", drawingFn);
+});
+
 let undo = document.getElementById("undo");
+
+undo.addEventListener("click", () => {
+    ctx.clearRect(0, 0, 10000, 10000);
+    PushArray.pop();
+    let last = PushArray.length - 1;
+    var canvasImg = new Image();
+    canvasImg.src = PushArray[last];
+    canvasImg.onload = function () {
+        ctx.drawImage(canvasImg, 0, 0);
+    };
+});
 
 // clear the canvas by clicking on the button 'Clear'
 let clear = document.getElementById("clear");
