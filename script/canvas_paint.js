@@ -14,6 +14,7 @@ document.getElementById("color_bg").addEventListener("change", (e) => {
     backgroundColor = e.target.value;
     canvas.style.backgroundColor = backgroundColor;
 });
+
 // changing the thickness of the brush
 let thickness;
 document.getElementById("thickness").addEventListener("change", (e) => {
@@ -35,7 +36,6 @@ canvas.addEventListener("mousedown", (e) => {
     let x = e.offsetX;
     let y = e.offsetY;
     ctx.moveTo(x, y);
-
     ctx.stroke();
     canvas.addEventListener("mousemove", drawingFn);
 });
@@ -53,7 +53,6 @@ eraser.addEventListener("click", () => {
 });
 
 // add the undo option a few steps back, button 'Undo'
-
 let PushArray = new Array();
 
 canvas.addEventListener("mouseup", (e) => {
